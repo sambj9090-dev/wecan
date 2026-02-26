@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Video Slider</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #111;
+        color: white;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .slider-container {
+        width: 80%;
+        max-width: 700px;
+        margin: auto;
+    }
+
+    video {
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    .buttons {
+        margin-top: 15px;
+    }
+
+    button {
+        padding: 10px 20px;
+        margin: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        background: #ff9800;
+        color: #111;
+        font-weight: bold;
+    }
+
+    button:hover {
+        background: #ffa726;
+    }
+</style>
+</head>
+<body>
+
+<h2>Video Slider - Swap Slide by Slide</h2>
+
+<div class="slider-container">
+    <video id="videoPlayer" controls>
+        <source src="video1.mp4" type="video/mp4">
+    </video>
+
+    <div class="buttons">
+        <button onclick="prevVideo()">⟸ Prev</button>
+        <button onclick="nextVideo()">Next ⟹</button>
+    </div>
+</div>
+
+<script>
+    // Your video list
+    const videos = [
+        "1.mp4",
+        "2.mp4",
+        "3.mp4"
+    ];
+
+    let index = 0;
+    const videoPlayer = document.getElementById("videoPlayer");
+
+    function loadVideo(i) {
+        videoPlayer.src = videos[i];
+        videoPlayer.play();
+    }
+
+    function nextVideo() {
+        index = (index + 1) % videos.length;
+        loadVideo(index);
+    }
+
+    function prevVideo() {
+        index = (index - 1 + videos.length) % videos.length;
+        loadVideo(index);
+    }
+</script>
+
+</body>
+</html>
